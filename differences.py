@@ -2,8 +2,11 @@ import os
 import shutil
 import queue
 from error import Error
+from transaction import Transaction
 
 class Differences:
+    list_of_transactions = []
+
     q = queue.Queue()
     error_list = []
     total_size_transferred = 0
@@ -40,10 +43,15 @@ class Differences:
                 else:
                     self.copy_file(item['name'], full_src_path, full_dest_path, 1)
 
+        self.delete_destination_files(list1_names, list2_names, full_dest_path)
+
+
+
+    def delete_destination_files(self, list1_names, list2_names, full_dest_path):
         for item in list2_names:
             if item not in list1_names:
+                print('Deleting file: ' + str(item))
                 self.delete_item(item, full_dest_path)
-
 
     def get_names_from_item_array(self, list):
         str_list = []
