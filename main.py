@@ -77,8 +77,8 @@ def main():
         print('Total size changed: ' + str(differences.total_size_transferred) + ' bytes')
 
         close_program = ''
-        while close_program != 'y':
-            close_program = input('Enter y to close program.')
+        while close_program != 'Y':
+            close_program = input('Enter y to close program: ')
 
     else:
         # Re-run the program with admin rights
