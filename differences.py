@@ -43,8 +43,8 @@ class Differences:
                 else:
                     self.copy_file(item['name'], full_src_path, full_dest_path, 1)
 
+        # Delete files on destination side that are no longer needed.
         self.delete_destination_files(list1_names, list2_names, full_dest_path)
-
 
 
     def delete_destination_files(self, list1_names, list2_names, full_dest_path):
@@ -83,7 +83,7 @@ class Differences:
         if file_name == '.folder_sync.lib':
             return
         try:
-            print('Copying: ' + src_path + '//' + file_name)
+            print('Copying: ' + src_path + '\\' + file_name)
             shutil.copyfile(src_path + self.file_sep + file_name, dest_path + self.file_sep + file_name)
             self.total_num_transferred += 1
             self.total_size_transferred += os.path.getsize(src_path + self.file_sep + file_name)
@@ -119,3 +119,6 @@ class Differences:
 
     def add_to_error_list(self, error):
         self.error_list.append(error)
+
+    def rebuild_destination_cache(self):
+        self
