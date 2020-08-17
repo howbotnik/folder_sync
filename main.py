@@ -78,7 +78,7 @@ def main():
 
         close_program = ''
         while close_program != 'Y':
-            close_program = input('Enter y to close program: ')
+            close_program = input('Enter \'Y\' to close program: ')
 
     else:
         # Re-run the program with admin rights
